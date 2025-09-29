@@ -1,5 +1,5 @@
 
-5from menu import show_menu
+from menu import show_menu
 
 def main():
     # Stock initial
