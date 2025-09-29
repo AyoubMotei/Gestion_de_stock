@@ -59,5 +59,5 @@ def show_menu(stock_list):
         elif choix == "5":
             print("Au revoir")
             break
-        else:
+        els
             print("Choix invalide, essayez encore.")
