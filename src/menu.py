@@ -1,5 +1,6 @@
 import stock
 import stats
+import visualize
 
 def print_products(stock_list):
     """Affiche tous les produits en tableau."""
@@ -36,7 +37,8 @@ def show_menu(stock_list):
         print("3. Mettre à jour une quantité")
         print("4. Afficher le stock")
         print("5. Statistiques") 
-        print("6. Quitter")
+        print("6. Visualisation") 
+        print("7. Quitter")
 
         choix = input("Votre choix : ").strip()
 
@@ -68,9 +70,21 @@ def show_menu(stock_list):
             expensive = stats.most_expensive_product(stock_list)
             print(f"Produit le moins cher : {cheapest[0]} ({cheapest[1]:.2f})")
             print(f"Produit le plus cher : {expensive[0]} ({expensive[1]:.2f})")
-
+            
         elif choix == "6":
+            print("\n--- Visualisation ---")
+            print("1. Histogramme des quantités")
+            print("2. Camembert de la valeur du stock")
+            sub_choice = input("Choix : ").strip()
+            if sub_choice == "1":
+                visualize.bar_chart(stock_list)
+            elif sub_choice == "2":
+                visualize.pie_chart(stock_list)
+            else:
+                print("Choix invalide.")
+        elif choix == "7":
             print("Au revoir")
             break
         else:
             print("Choix invalide, essayez encore.")
+            
