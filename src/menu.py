@@ -1,4 +1,5 @@
 import stock
+import stats
 
 def print_products(stock_list):
     """Affiche tous les produits en tableau."""
@@ -16,7 +17,7 @@ def input_int(prompt):
         try:
             return int(input(prompt))
         except ValueError:
-            print("⚠️ Entrez un entier valide.")
+            print("Entrez un entier valide.")
 
 def input_float(prompt):
     """Assure que l’utilisateur entre un float."""
@@ -24,7 +25,7 @@ def input_float(prompt):
         try:
             return float(input(prompt))
         except ValueError:
-            print("⚠️ Entrez un nombre valide (ex: 12.5).")
+            print("Entrez un nombre valide (ex: 12.5).")
 
 def show_menu(stock_list):
     """Boucle principale du menu."""
@@ -34,7 +35,8 @@ def show_menu(stock_list):
         print("2. Supprimer un produit")
         print("3. Mettre à jour une quantité")
         print("4. Afficher le stock")
-        print("5. Quitter")
+        print("5. Statistiques") 
+        print("6. Quitter")
 
         choix = input("Votre choix : ").strip()
 
@@ -57,7 +59,18 @@ def show_menu(stock_list):
             print_products(stock.get_products(stock_list))
 
         elif choix == "5":
+            print("\n--- Statistiques ---")
+            print(f"Valeur totale du stock : {stats.total_value(stock_list):.2f}")
+            print(f"Prix moyen : {stats.average_price(stock_list):.2f}")
+            print(f"Prix minimum : {stats.min_price(stock_list):.2f}")
+            print(f"Prix maximum : {stats.max_price(stock_list):.2f}")
+            cheapest = stats.cheapest_product(stock_list)
+            expensive = stats.most_expensive_product(stock_list)
+            print(f"Produit le moins cher : {cheapest[0]} ({cheapest[1]:.2f})")
+            print(f"Produit le plus cher : {expensive[0]} ({expensive[1]:.2f})")
+
+        elif choix == "6":
             print("Au revoir")
             break
-        els
+        else:
             print("Choix invalide, essayez encore.")

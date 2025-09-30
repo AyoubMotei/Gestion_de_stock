@@ -1,5 +1,3 @@
-# src/stock.py
-# Fonctions pour gérer le stock
 # Chaque produit = [nom (str), quantité (int), prix (float)]
 
 def find_product_index(stock, name):
